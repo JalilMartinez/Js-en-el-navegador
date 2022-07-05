@@ -17,12 +17,15 @@ console.log(navegacion[0]);
 
 navegacion[0].href = 'google.com';
 
+navegacion[0].classList.add('NuevaNavegacion');
+console.log(navegacion);
+navegacion[0].classList.remove('NuevaNavegacion');
+console.log(navegacion);
 
 // lo mismo que arriba pero sin agregar constante
-
 /* document.querySelectorAll('.navegacion a')[0].textContent = 'Nuevo';*/
 
 
-
-
 // getElementById
+const heading2 = document.getElementById('heading2');
+console.log(heading2);
