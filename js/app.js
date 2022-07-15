@@ -19,8 +19,8 @@ navegacion[0].href = 'google.com';
 
 navegacion[0].classList.add('NuevaNavegacion');
 console.log(navegacion);
-navegacion[0].classList.remove('NuevaNavegacion');
-console.log(navegacion);
+// navegacion[0].classList.remove('NuevaNavegacion');
+// console.log(navegacion);
 
 // lo mismo que arriba pero sin agregar constante
 /* document.querySelectorAll('.navegacion a')[0].textContent = 'Nuevo';*/
@@ -29,3 +29,18 @@ console.log(navegacion);
 // getElementById
 const heading2 = document.getElementById('heading2');
 console.log(heading2);
+
+//Generar un nuevo enlace
+const nuevoEnlace = document.createElement('A');
+//Agregar el href
+nuevoEnlace.href = 'nuevo-enlace.html';
+//Agregar texto 
+nuevoEnlace.textContent = 'Un nuevo enlace';
+// Agregar clase
+nuevoEnlace.classList.add('navegacion__enlace');
+// Agregarlo al documento
+const navega = document.querySelector('.navegacion');
+
+navega.appendChild(nuevoEnlace);
+
+console.log(nuevoEnlace);
