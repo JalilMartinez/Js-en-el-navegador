@@ -44,3 +44,26 @@ const navega = document.querySelector('.navegacion');
 navega.appendChild(nuevoEnlace);
 
 console.log(nuevoEnlace);
+
+
+//Eventos
+
+console.log(1);
+window.addEventListener('load',function(){ //Load espera a que el js y los archivos que dependen del html esten listos(css, imagenes, etc)
+    console.log(2);
+});
+window.addEventListener('load',function(){ 
+    console.log(3);
+});
+
+document.addEventListener('DOMContentLoaded', function(){// DOMContentLoaded solo espera a que se descargue el html, no espera css o imagenes
+    console.log(4);
+})
+
+
+console.log(5);
+
+
+window.onscroll = function (){
+    console.log('scrolling...');
+}
