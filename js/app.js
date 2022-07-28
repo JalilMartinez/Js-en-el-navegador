@@ -67,3 +67,49 @@ console.log(5);
 window.onscroll = function (){
     console.log('scrolling...');
 }
+
+// Seleccionar elementos y asociarles un evento
+const btnEnviar = document.querySelector('.boton--primario');
+btnEnviar.addEventListener('click', function (evento) {
+    //Validar un formulario
+    console.log(evento);//Para que no se actualice la pagina por default y validar el formulario
+    evento.preventDefault();//Para que no se actualice la pagina por default y validar el formulario
+    console.log('enviando Formulario');
+});
+
+
+// Eventos de los Imputs y los textarea
+const datos = {
+    nombre : '',
+    email: '',
+    mensaje: ''
+}
+
+const nombre = document.querySelector('#nombre');
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
+
+// nombre.addEventListener('change', function () {//change se ejecuta hasta que se selecciona otra area del navegador (no en el textbox)
+//     console.log('escribiendo...(con change)');
+// });
+
+// nombre.addEventListener('input', function (e) {//change se ejecuta hasta que se selecciona otra area del navegador (no en el textbox)
+//     console.log(e.target.value);
+//     console.log('escribiendo...');
+// });
+
+// email.addEventListener('input', function (e) {//change se ejecuta hasta que se selecciona otra area del navegador (no en el textbox)
+//     console.log(e.target.value);
+    
+// });
+nombre.addEventListener('input', leerTexto);
+
+email.addEventListener('input', leerTexto);
+
+mensaje.addEventListener('input', leerTexto);
+function leerTexto(e) {
+    // console.log(e.target.value);
+    datos[e.target.id] = e.target.value;
+    
+    console.log(datos);
+}
