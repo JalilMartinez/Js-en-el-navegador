@@ -68,14 +68,14 @@ window.onscroll = function (){
     console.log('scrolling...');
 }
 
-// Seleccionar elementos y asociarles un evento
-const btnEnviar = document.querySelector('.boton--primario');
-btnEnviar.addEventListener('click', function (evento) {
-    //Validar un formulario
-    console.log(evento);//Para que no se actualice la pagina por default y validar el formulario
-    evento.preventDefault();//Para que no se actualice la pagina por default y validar el formulario
-    console.log('enviando Formulario');
-});
+// // Seleccionar elementos y asociarles un evento
+// const btnEnviar = document.querySelector('.boton--primario');
+// btnEnviar.addEventListener('click', function (evento) {
+//     //Validar un formulario
+//     console.log(evento);//Para que no se actualice la pagina por default y validar el formulario
+//     evento.preventDefault();//Para que no se actualice la pagina por default y validar el formulario
+//     console.log('enviando Formulario');
+// });
 
 
 // Eventos de los Imputs y los textarea
@@ -88,7 +88,7 @@ const datos = {
 const nombre = document.querySelector('#nombre');
 const email = document.querySelector('#email');
 const mensaje = document.querySelector('#mensaje');
-
+const formulario = document.querySelector('.formulario');
 // nombre.addEventListener('change', function () {//change se ejecuta hasta que se selecciona otra area del navegador (no en el textbox)
 //     console.log('escribiendo...(con change)');
 // });
@@ -102,14 +102,60 @@ const mensaje = document.querySelector('#mensaje');
 //     console.log(e.target.value);
     
 // });
+
 nombre.addEventListener('input', leerTexto);
-
 email.addEventListener('input', leerTexto);
-
 mensaje.addEventListener('input', leerTexto);
+// Evento de submit (en formularios se utiliza submit)
+formulario.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    // Validar formulario
+    const { nombre, email, mensaje } = datos;
+    
+    if(nombre === '' || email === '' || mensaje === '' ) {
+        console.log('Al menos un campo esta vacio');
+        mostrarError('Todos los campos son obligatorios');
+        return; // Detiene la ejecución de esta función
+    }
+    // enviar formulario
+    console.log('Todo bien...')
+
+    mostrarMensaje('Mensaje enviado correctamente');
+});
+
+
 function leerTexto(e) {
     // console.log(e.target.value);
     datos[e.target.id] = e.target.value;
     
     console.log(datos);
 }
+
+// Muestra error en pantalla
+
+function mostrarError(mensaje) {
+    const error = document.createElement('P');
+    error.textContent = mensaje;
+    error.classList.add('error');
+    formulario.appendChild(error);
+    //Desaparecer despues de 5 seg
+    setTimeout(() => {
+        error.remove();
+    }, 5000);
+}
+// enviado correctamente
+function mostrarMensaje(mensaje) {
+    const alerta = document.createElement('p');
+    alerta.textContent = mensaje;
+    alerta.classList.add('correcto');
+    formulario.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
+}
+
+
+
+
